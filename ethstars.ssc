@@ -1,0 +1,69 @@
+// Name: List of Ethereum consensus stars
+// Author: Mario Havel
+// License: Public Domain
+// Version: 0.1
+// Description: This script gives you an excursion around stars which named Ethereum consensus versions 
+
+include("i18n.inc");
+
+var ethstar = [[tr("Altair"),  11.0, tr("Altair is the twelfth-brightest star in the night sky and the brightest in the Aquila constellation.\n 16.7 light-years from our Sun\n Solar radius is between 1.57 and 2.01. \n Activated at epoch 74,240")],
+		  [  tr("Bellatrix"),  11.0, tr("Bellatrix is the 25th brightest star in the night sky and the third brightest star in the Orion constellation\n 250 light years from the sun.\n It's a blue giant star, 7.7 times as massive as the sun with solar radius is 5.75. \n Activated at epoch 144,896.")],
+		  [ tr("Capella"),  10.0, tr("Capella is the brightest star in the northern constellation of Auriga and the third brightest in the northen sky.\n 42.9 light years from the Sun \n Capella appears as a single point but actually a quadruple star system. \n Activated at epoch 194,048.")],
+     	     [tr("Deneb"), 10.0, tr("Deneb is the brightest star in the Cygnus constellation and 19th brightest in the night sky.\n Distance around 2615 light years and solar radius around 200\n")],
+          [tr("Electra"), 4.0, tr("Electra is blue-white giant star, the brightest in Taurus constellation.\n Its distance is around 400 light years from the Sun and solar radius around 6\n")]
+		 ];
+
+var color="#00AAFF";
+
+core.clear("starchart");
+GridLinesMgr.setFlagEquatorGrid(false);
+
+core.setGuiVisible(false);
+ConstellationMgr.setFlagArt(false);
+ConstellationMgr.setFlagBoundaries(false);
+ConstellationMgr.setFlagLines(false);
+ConstellationMgr.setFlagLabels(false);
+core.wait(3);
+
+var vshift = 30;
+var vstart = 90;
+
+for (i=0; i<ethstar.length; i++)
+{
+	core.selectObjectByName(ethstar[i][0], false);
+	StelMovementMgr.setFlagTracking(true);
+	StelMovementMgr.zoomTo(ethstar[i][1], 5);
+        ConstellationMgr.setFlagArt(true);
+        ConstellationMgr.setFlagLines(true);
+
+	var lsname  = LabelMgr.labelScreen(ethstar[i][0], 20, 20, false, 30, color);
+	var notes = ethstar[i][2].split("\n");
+	var lsnotes = [];
+	var cnt = notes.length;
+	for (j=0; j<cnt; j++)
+	{
+		lsnotes[j] = LabelMgr.labelScreen(notes[j], 20, vstart + (vshift*j), false, 20, color);
+	}
+
+	LabelMgr.setLabelShow(lsname, true);
+	for (j=0; j<cnt; j++)
+	{
+		LabelMgr.setLabelShow(lsnotes[j], true);
+	}
+
+	core.wait(5);
+        ConstellationMgr.setFlagArt(false);
+	core.wait(3);
+	LabelMgr.setLabelShow(lsname, false);
+	for (j=0; j<cnt; j++)
+	{
+		LabelMgr.setLabelShow(lsnotes[j], false);
+	}
+	StelMovementMgr.zoomOut(true);
+	core.wait(1);
+        StelMovementMgr.zoomOut(false);
+	core.wait(0.5);
+}
+core.clear("natural");
+core.setGuiVisible(true);
+core.goHome();
