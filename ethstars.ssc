@@ -2,15 +2,20 @@
 // Author: Mario Havel
 // License: Public Domain
 // Version: 0.1
-// Description: This script gives you an excursion around stars which named Ethereum consensus versions 
+// Description: This script gives you an excursion around stars which named Ethereum consensus upgrades 
+// include("i18n.inc");
 
-include("i18n.inc");
+function tr(str)
+{
+	return core.translate(str);
+}
 
-var ethstar = [[tr("Altair"),  11.0, tr("Altair is the twelfth-brightest star in the night sky and the brightest in the Aquila constellation.\n 16.7 light-years from our Sun\n Solar radius is between 1.57 and 2.01. \n Activated at epoch 74,240")],
-		  [  tr("Bellatrix"),  11.0, tr("Bellatrix is the 25th brightest star in the night sky and the third brightest star in the Orion constellation\n 250 light years from the sun.\n It's a blue giant star, 7.7 times as massive as the sun with solar radius is 5.75. \n Activated at epoch 144,896.")],
-		  [ tr("Capella"),  10.0, tr("Capella is the brightest star in the northern constellation of Auriga and the third brightest in the northen sky.\n 42.9 light years from the Sun \n Capella appears as a single point but actually a quadruple star system. \n Activated at epoch 194,048.")],
-     	     [tr("Deneb"), 10.0, tr("Deneb is the brightest star in the Cygnus constellation and 19th brightest in the night sky.\n Distance around 2615 light years and solar radius around 200\n")],
-          [tr("Electra"), 4.0, tr("Electra is blue-white giant star, the brightest in Taurus constellation.\n Its distance is around 400 light years from the Sun and solar radius around 6\n")]
+
+var ethstar = [[tr("Altair"),  11.0, tr("Altair is the twelfth-brightest star in the night sky and the brightest in the Aquila constellation.\n 16.7 light-years from our Sun\n Solar radius is between 1.57 and 2.01. \n Activated at epoch 74,240 as solely consensus upgrade.")],
+		  [  tr("Bellatrix"),  11.0, tr("Bellatrix is the 25th brightest star in the night sky and the third brightest star in the Orion constellation\n 250 light years from the sun.\n It's a blue giant star, 7.7 times as massive as the sun with solar radius is 5.75. \n Activated at epoch 144,896 alongside Paris, activating the Merge.")],
+		  [ tr("Capella"),  10.0, tr("Capella is the brightest star in the northern constellation of Auriga and the third brightest in the northen sky.\n 42.9 light years from the Sun \n Capella appears as a single point but actually a quadruple star system. \n Activated at epoch 194,048 alongside Shanghai.")],
+     	     [tr("Deneb"), 10.0, tr("Deneb is the brightest star in the Cygnus constellation and 19th brightest in the night sky.\n Distance around 2615 light years and solar radius around 200. Activated at epoch 269568 alongside Cancun.\n")],
+          [tr("Electra"), 4.0, tr("Electra is blue-white giant star, the brightest in Taurus constellation.\n Its distance is around 400 light years from the Sun and solar radius around 6. Will activate together with Prague.\n")]
 		 ];
 
 var color="#00AAFF";
@@ -67,3 +72,4 @@ for (i=0; i<ethstar.length; i++)
 core.clear("natural");
 core.setGuiVisible(true);
 core.goHome();
+
