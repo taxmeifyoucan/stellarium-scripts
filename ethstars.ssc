@@ -28,6 +28,7 @@ ConstellationMgr.setFlagArt(false);
 ConstellationMgr.setFlagBoundaries(false);
 ConstellationMgr.setFlagLines(false);
 ConstellationMgr.setFlagLabels(false);
+HighlightMgr.setColor(Vec3f(1.0,0.0,0.0));
 core.wait(3);
 
 var vshift = 30;
@@ -56,18 +57,18 @@ for (i=0; i<ethstar.length; i++)
 		LabelMgr.setLabelShow(lsnotes[j], true);
 	}
 
-	core.wait(5);
+	core.wait(8);
         ConstellationMgr.setFlagArt(false);
-	core.wait(3);
+	core.wait(6);
 	LabelMgr.setLabelShow(lsname, false);
 	for (j=0; j<cnt; j++)
 	{
 		LabelMgr.setLabelShow(lsnotes[j], false);
 	}
 	StelMovementMgr.zoomOut(true);
-	core.wait(1);
+	core.wait(2);
         StelMovementMgr.zoomOut(false);
-	core.wait(0.5);
+	core.wait(1);
 }
 core.clear("natural");
 core.setGuiVisible(true);
